@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+}
+
+group ''
+version '1.0-SNAPSHOT'
+
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src']
+        }
+    }
+}
+dependencies {
+    compile 'junit:junit:4.12'
+    compile group: 'org.json', name: 'json', version: '20200518'
+}
+
+task(runMain, dependsOn: 'classes', type: JavaExec) {
+    main = 'GitHubParser'
+    classpath = sourceSets.main.runtimeClasspath
+}
